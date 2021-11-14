@@ -10,50 +10,54 @@
     <title>Server Calculator</title>
 </head>
 
-
-<body>
     <!-- ------PAGE TITLE ------->
     <h1>Server Side Calculator</h1> 
 
+<body>
+
+<form id="form">
 <!-- ---------------------USER FIRST INPUT------------------------ -->
 <input id="nput1" type="number" placeholder="Type First Number">
 
 <!-- --------------------PLUS BUTTON---------------------------- -->
-<button id="add">+</button>
+<button id="add-button" data-operation="add" class="equationType" name="equation" value="+" >+</button>
+<button id="sub-button" data-operation="sub" class="equationType" name="equation" value="-" >-</button>
+<button id="div-button" data-operation="div" class="equationType" name="equation" value="/" >/</button>
+<button id="mul-button" data-operation="mul" class="equationType" name="equation" value="*" >*</button>
 
 <!-- ---------------------USER SECOND INPUT------------------------ -->
 <input id="input2" type="number" placeholder="Type Second Number">
 
-<!-- --------------------EQUAL BUTTON------------------------- -->
-<button id="equal-button">=</button>
 
-<!-- --------------------UNORDERED LIST------------------------- -->
-<ul id="total-list"></ul>
+<!-- ---------------------SUBMIT INPUT------------------------ -->
+<input id="result-button" type="number" placeholder="Result" class="result" type="result"  value="=" readonly>
 
 
+<!-- --------------------EQUAL BUTTON-------------------------
+<button id="equal">=</button> -->
 
+
+<!-- --------------------CLEAR BUTTON------------------------- -->
+<button id="clear-button">C</button>
+
+
+</form>
+
+<!-- --------------------UL of HISTORY------------------------- -->
+<div id="answer"> </div>
+
+<div id="history">
+    <h2>History of Calculations:</h2>
+</div>
+
+
+
+
+
+
+<!-- --------------------UNORDERED LIST-------------------------
+<ul id="total-list"></ul> -->
 <!-- --------------------NEW TOTAL------------------------- -->
-<h5 id="output1"> Total: </h5>
-
-
-
-<!-- --------------------NEW TOTAL BODY------------------------- -->
-<table>
-    <thead>
-        <tr>
-            <th>History of Calculations: </th>
-        </tr>
-     </thead>
-    
-    
-    <tbody  id="total-table-body"> <!-- ----TOTAL-body -->
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-    </table> 
-
-
+<h5 id="output"> Total: </h5>
 </body>
 </html>

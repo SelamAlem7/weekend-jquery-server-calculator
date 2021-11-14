@@ -1,97 +1,100 @@
+console.log('js is working !!');
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 $(document).ready(onReady);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+let total = [];
+
+////////////////////////////////
+let calculatorOps ='';
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function onReady() {
-    console.log('jQuery is working!');
-    geTotal();
-    $('#equal-button').on('click', handleEqualClick);
+    console.log('jQuery is rollinggg!');
+    $(document).on('click', '.equationType', handleOpClicks);
+    $('#result-button').on('click', submitInputs);
+    $('#clear-button').on('click', clearInput);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-function geTotal() {
-    $.ajax({
-        method: 'GET',
-        url: '/server-calculator'
-    }).then((response) => {
-        console.log('response', response);
-        $('#total-list').empty();
+function handleOpClicks(event) {
+    console.log('clicked!!', calculatorOps);
+    event.preventDefault();
+    calculatorOps = this.value;
 
-        for (let total of response) {
-            $('#total-list').append(`
-          <li>${total.firstNumber} ${total.secondNumber}</li>
-        `)
-        }
-    }).catch((error) => {
-        console.log('error', error);
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+function submitInputs(event){
+    event.preventDefault();
+
+    let newCalculation = {
+        firstNumber: $('#input1').val(),
+        secondNumber: $('input2').val(),
+        equationType: calculatorOps,
+    };
+    console.log(newCalculation);
+
+    $.ajax({
+        data: {addEquation: newCalculation },
+        url: '/server-calculator',
+        method: 'POST',
+
+    }).then(function(response) {
+        console.log(response);
+        calculationResult();
+
+    }).catch(function(){
+        alert('Try Again...')
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function calculationResult() {
+    console.log('in calculations result function');
+    $.ajax({
+        url: '/calculation-results',
+        method: 'GET',
+    }).then(function(response) {
+        console.log('cal result responsed', response);
+        $('#answer').empty();
+        $('#answer').append(`<h3>Your Total is: ${response.answer} </h3>`);
+        $('#history').empty();
+
+        total.push(response);
+        console.log(total);
+
+        listHistory();
+        
+    }).catch(function () {
+        alert('Try Again...')
     })
 }
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function handleEqualClick() {
-    let firstNumber = $('#input1').val();
-    let secondNumber = $('#input2').val();
-    let result;
+function listHistory() {
+    for (let calculation of total) {
+        $('#history').append(`<li> ${result.firstNumber} ${calculation.equationType} ${calculation.secondNumber} = ${calculation.answer} </li>`);
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    let newTotal = [firstNumber + secondNumber]
-
-    total.push(newTotal);
-
+function clearInput(event) {
+    event.preventDefault();
     $('#input1').val('');
     $('#input2').val('');
+    calculatorOps = '';
 
+    
 }
-
-
-function handleEqualClick() {
-    var num1 = $('#input1').val();
-    var num2 = $('#input2').val();
-    var result;
-
-    result = Number(num1) + Number(num2);
-    document.getElementById("output1").value = result;
-
-}
-
-
-
-
-
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-function rednderNewTotal(totalToRender) {
-    $('#total-table-body').empty();
-
-    for (let total of totalToRender) {
-        let newTotalTable = `
-        <tr>
-        <td>${total.firstNumber}</td>
-        <td>${total.secondNumber}</td>
-    </tr>
-        `;
-
-        $('#total-table-body').append(newTotalTable)
-
-    }
-
-}
 
 
-
-
-
-///// MAYBE THIS APPROACH IS BETTER??//////////
-// function listCalculations(total) {
-//     for (let i = 0; i < total.length; i++) {
-//         console.log(total[i]);
-//     }
-// }
-// console.log(listCalculations(total));
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,6 +102,17 @@ function rednderNewTotal(totalToRender) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
