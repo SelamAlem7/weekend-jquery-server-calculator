@@ -1,27 +1,32 @@
+.input {
+    width:200px;
+    padding:20px;
+    font-size: 20px;
+  }
+  
 
-  /* button */
-  button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    font-size: 1.5rem;
-    background-color: #222;
-    color: #fff;
-    margin: 10px;
-  }
   
-  button:hover {
+  /* ---------------START BUTTONS---------------- */
+  .equationType {
+    padding: 10px 20px;
+    font-size: 20px;
+    text-align: center;
     cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 9px #999;
   }
   
-  /* button style end */
+  .equationType:hover {background-color: #3e8e41}
   
-  /* operator */
-  .operator {
-    background-color: #00ff44;
-    color: #000;
+  .equationType:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
+    /* ---------------END BUTTONS---------------- */
+
   
-  /* operator style end */
