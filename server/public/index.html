@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- --------------------START SOURCING FILES------------------------- -->
     <script src="jquery.js"></script>
     <script src="client.js"></script>
     <link rel="stylesheet" href="style.css">
+<!-- --------------------END SOURCING FILES------------------------- -->
+
     <title>Server Calculator</title>
 </head>
 
@@ -15,21 +19,23 @@
 
 <body>
 
+ <!-- start form -->
 <form id="form">
-<!-- ---------------------USER FIRST INPUT------------------------ -->
+    
+<!-- ---------------------USERS FIRST INPUT------------------------ -->
 <input id="input1" type="number" placeholder="Type First Number">
 
-<!-- --------------------PLUS BUTTON---------------------------- -->
+<!-- --------------------OPERATION BUTTONS---------------------------- -->
 <button id="add-button" data-operation="add" class="equationType" name="equation" value="+" >+</button>
 <button id="sub-button" data-operation="sub" class="equationType" name="equation" value="-" >-</button>
 <button id="div-button" data-operation="div" class="equationType" name="equation" value="/" >/</button>
 <button id="mul-button" data-operation="mul" class="equationType" name="equation" value="*" >*</button>
 
-<!-- ---------------------USER SECOND INPUT------------------------ -->
+<!-- ---------------------USERS SECOND INPUT------------------------ -->
 <input id="input2" type="number" placeholder="Type Second Number">
 
 
-<!-- ---------------------SUBMIT INPUT------------------------ -->
+<!-- ---------------------SUBMIT INPUT// EQUAL BUTTON------------------------ -->
 <input id="result-button" placeholder="Result" class="result" type="submit"  value="=" readonly>
 
 
@@ -38,10 +44,12 @@
 </form> 
 <!-- end form -->
 
-<!-- --------------------UL of HISTORY------------------------- -->
+<!-- --------------------START DIV for UL of HISTORY------------------------- -->
 <div id='answer'> </div>
     <h2>History of Calculations: <div id="history"></div></h2>
 </div>
+<!-- --------------------END DIV for UL of HISTORY------------------------- -->
+
 
 </body>
 </html>
