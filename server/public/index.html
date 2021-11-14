@@ -17,7 +17,7 @@
 
 <form id="form">
 <!-- ---------------------USER FIRST INPUT------------------------ -->
-<input id="nput1" type="number" placeholder="Type First Number">
+<input id="input1" type="number" placeholder="Type First Number">
 
 <!-- --------------------PLUS BUTTON---------------------------- -->
 <button id="add-button" data-operation="add" class="equationType" name="equation" value="+" >+</button>
@@ -30,34 +30,18 @@
 
 
 <!-- ---------------------SUBMIT INPUT------------------------ -->
-<input id="result-button" type="number" placeholder="Result" class="result" type="result"  value="=" readonly>
-
-
-<!-- --------------------EQUAL BUTTON-------------------------
-<button id="equal">=</button> -->
+<input id="result-button" placeholder="Result" class="result" type="submit"  value="=" readonly>
 
 
 <!-- --------------------CLEAR BUTTON------------------------- -->
 <button id="clear-button">C</button>
-
-
-</form>
+</form> 
+<!-- end form -->
 
 <!-- --------------------UL of HISTORY------------------------- -->
-<div id="answer"> </div>
-
-<div id="history">
-    <h2>History of Calculations:</h2>
+<div id='answer'> </div>
+    <h2>History of Calculations: <div id="history"></div></h2>
 </div>
 
-
-
-
-
-
-<!-- --------------------UNORDERED LIST-------------------------
-<ul id="total-list"></ul> -->
-<!-- --------------------NEW TOTAL------------------------- -->
-<h5 id="output"> Total: </h5>
 </body>
 </html>

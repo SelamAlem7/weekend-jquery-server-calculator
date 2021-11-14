@@ -15,7 +15,7 @@ let calculateIt = [];
 function CalcInputs(num1, num2, equationType) {
     let answer = '';
     if (equationType === '+'){
-        answer = +num1 + +num2;
+        answer = +num1 + +num2;        
     }
     else if ( equationType === '-'){
         answer = +num1 - +num2;

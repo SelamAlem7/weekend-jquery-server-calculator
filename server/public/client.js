@@ -15,11 +15,12 @@ function onReady() {
     $(document).on('click', '.equationType', handleOpClicks);
     $('#result-button').on('click', submitInputs);
     $('#clear-button').on('click', clearInput);
+    listHistory();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 function handleOpClicks(event) {
-    console.log('clicked!!', calculatorOps);
+    console.log('Operator of choice has been clicked:', calculatorOps);
     event.preventDefault();
     calculatorOps = this.value;
 
@@ -32,7 +33,7 @@ function submitInputs(event){
 
     let newCalculation = {
         firstNumber: $('#input1').val(),
-        secondNumber: $('input2').val(),
+        secondNumber: $('#input2').val(),
         equationType: calculatorOps,
     };
     console.log(newCalculation);
@@ -47,7 +48,7 @@ function submitInputs(event){
         calculationResult();
 
     }).catch(function(){
-        alert('Try Again...')
+        console.log('Error');
     });
 }
 
@@ -59,7 +60,7 @@ function calculationResult() {
         url: '/calculation-results',
         method: 'GET',
     }).then(function(response) {
-        console.log('cal result responsed', response);
+        console.log('Your calculation is:', response);
         $('#answer').empty();
         $('#answer').append(`<h3>Your Total is: ${response.answer} </h3>`);
         $('#history').empty();
@@ -68,19 +69,15 @@ function calculationResult() {
         console.log(total);
 
         listHistory();
-        
-    }).catch(function () {
-        alert('Try Again...')
+    })
+    .catch(function () {
+       console.log('Error');
+       
     })
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function listHistory() {
-    for (let calculation of total) {
-        $('#history').append(`<li> ${result.firstNumber} ${calculation.equationType} ${calculation.secondNumber} = ${calculation.answer} </li>`);
-    }
-}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function clearInput(event) {
@@ -94,6 +91,11 @@ function clearInput(event) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function listHistory() {
+    for (let calculation of total) {
+        $('#history').append(`<li> ${calculation.firstNumber} ${calculation.equationType} ${calculation.secondNumber} = ${calculation.answer} </li>`);
+    }
+}
 
 
 
